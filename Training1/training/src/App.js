@@ -3,11 +3,11 @@ import Questions from './Questions';
 import Data from './Data';
 
 function App() {
-  const Datacomp = Data.map((data)=>{
+  const Datacomp = Data.map((data, index)=>{
     return (
       <>
         <Questions 
-          index={data.index}
+          index={index+1}
           q={data.q}
           a={data.a}
         />
