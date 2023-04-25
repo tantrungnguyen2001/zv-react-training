@@ -1,0 +1,21 @@
+*{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.app__title{
+  font-size: 24px;
+  text-align: center;
+  align-self: center;
+  font-weight: 500;
+}
+
+.app__form{
+  width: 90%;
+  margin: 16px auto;
+}
+
+.mb-24{
+  margin-bottom: 24px;
+}
