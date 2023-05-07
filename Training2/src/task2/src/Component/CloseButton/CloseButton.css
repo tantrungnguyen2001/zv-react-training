@@ -1,0 +1,14 @@
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 2px solid red;
+}
+
+.close:hover {
+  color: var(--main-color);
+  background: red;
+  cursor: pointer;
+}
