@@ -1,12 +1,12 @@
 import './App.css';
-import Questions from './Questions';
 import Data from './Data';
+import QuestionItem from './QuestionItem';
 
 function App() {
   const Datacomp = Data.map((data, index)=>{
     return (
       <>
-        <Questions 
+        <QuestionItem
           index={index+1}
           q={data.q}
           a={data.a}
