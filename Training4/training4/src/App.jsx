@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
+import { debounce, throttle } from 'lodash'
 import './App.css'
 
 export default function App() {
@@ -7,16 +8,19 @@ export default function App() {
   const [moreJokes, setMoreJokes] = useState(0)
 
   useEffect(() => {
-    axios
-    .get(`https://official-joke-api.appspot.com/jokes/random`)
-    .then(data => setJokes([data.data]))
-    .catch(err => console.log(err))
-    .finally()
+    axios.get(`https://official-joke-api.appspot.com/jokes/random`)
+      .then(data => setJokes([data.data]))
+      .catch(err => console.log(err))
+      .finally()
   }, [moreJokes])
   
   useEffect(() => {
     console.log(moreJokes);
   }, [moreJokes])
+
+  const handleMoreJokeClick = () => setMoreJokes(next => next + 1)
+
+  const debounceOnClick = debounce(handleMoreJokeClick, 1000)
 
   return (
     <div>
@@ -29,7 +33,7 @@ export default function App() {
         ))}
       </ul>
       <button 
-        onClick={() => setMoreJokes(next => next + 1)}
+        onClick={debounceOnClick}
         className='btnMoreJokes'
       >Get more jokes</button>
     </div>
