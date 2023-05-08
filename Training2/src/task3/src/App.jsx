@@ -49,13 +49,10 @@ function App() {
         <button onClick={handleStart}>Start</button>
         :
         <>
-          {/* <button onClick={handleStart}>Resume</button> */}
-          {/* <button onClick={handleStop}>Stop</button> */}
-        <button onClick={handleStop}>Pause</button>
+        <button onClick={handleStop}>Stop</button>
         </>
         }
       </div>
-
 
       <CountDown countdown={countdown}/>
     </div>
