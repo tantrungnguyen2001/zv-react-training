@@ -6,10 +6,19 @@ export default function Modal() {
   const handleShowModal = () => setshowModal(!showModal)
 
   useEffect(() => {
-    document.addEventListener('keydown', detectKeyDown, true)
-    
-    console.log(showModal);
-  }, [])
+    if(showModal){
+      document.addEventListener('keydown', detectKeyDown)
+    }else{
+      document.removeEventListener('keydown', detectKeyDown)
+    }
+  }, [showModal])
+  
+  console.log(showModal);
+
+  const handleRemoveEventListener = () => {
+    document.removeEventListener('keydown', detectKeyDown)
+    handleShowModal()
+  }
 
   const detectKeyDown = (e) => {
     if(e.key == ' ') console.log('Key Pressed: Spacebar')
@@ -33,7 +42,7 @@ export default function Modal() {
             />
             <button 
               className='modal__close' 
-              onClick={handleShowModal}
+              onClick={handleRemoveEventListener}
             >&times;</button>
           </div>
         </div>
