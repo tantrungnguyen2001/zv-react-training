@@ -5,7 +5,7 @@ import CountDown from './Component/CountDown/CountDown'
 
 function App() {
   const [countdown, setCountdown] = useState('')
-  const [toggle, setToggle] = useState(true)
+  const [isRunningCountdown, setIsRunningCountdown] = useState(true)
 
   const timeId = useRef()
 
@@ -22,20 +22,20 @@ function App() {
       timeId.current = setInterval(() => {
         setCountdown(prev => prev - 1)
       }, 1000)
-      setToggle(!toggle)
+      setIsRunningCountdown(!isRunningCountdown)
     }
-    return () => clearInterval(timeId.current)
   }
-
+  
   const handleStop = (e) => {
     e.preventDefault()
     clearInterval(timeId.current)
-    setToggle(!toggle)
+    setIsRunningCountdown(!isRunningCountdown)
   }
 
   useEffect(() => {
     if(countdown < 0){
       clearInterval(timeId.current)
+      setIsRunningCountdown(false)
       alert('End')
     }
   }, [countdown])
@@ -43,7 +43,7 @@ function App() {
   return (
     <div className='App'>
       <input onChange={e => setCountdown(e.target.value)}/>
-      {toggle ? 
+      {isRunningCountdown ? 
       <button onClick={handleStart}>Start</button>
       :
       <button onClick={handleStop}>Stop</button>
