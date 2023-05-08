@@ -17,4 +17,12 @@ button{
     color: black;
     cursor: pointer;
     outline: none;
+    padding: 4px 8px;
+    margin: 8px;
+}
+
+.interactBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

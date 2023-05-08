@@ -20,7 +20,7 @@ function App() {
       alert('Number must be greater than 0')
     }else {
       timeId.current = setInterval(() => {
-        setCountdown(prev => prev - 1)
+        setCountdown(prev =>  prev - 1)
       }, 1000)
       setIsRunningCountdown(!isRunningCountdown)
     }
@@ -43,11 +43,20 @@ function App() {
   return (
     <div className='App'>
       <input onChange={e => setCountdown(e.target.value)}/>
-      {isRunningCountdown ? 
-      <button onClick={handleStart}>Start</button>
-      :
-      <button onClick={handleStop}>Stop</button>
-    }
+
+      <div className='interactBtn'>
+        {isRunningCountdown ? 
+        <button onClick={handleStart}>Start</button>
+        :
+        <>
+          {/* <button onClick={handleStart}>Resume</button> */}
+          {/* <button onClick={handleStop}>Stop</button> */}
+        <button onClick={handleStop}>Pause</button>
+        </>
+        }
+      </div>
+
+
       <CountDown countdown={countdown}/>
     </div>
   )
