@@ -13,8 +13,6 @@ export default function Modal() {
     }
   }, [showModal])
   
-  console.log(showModal);
-
   const handleRemoveEventListener = () => {
     document.removeEventListener('keydown', detectKeyDown)
     handleShowModal()
@@ -36,10 +34,7 @@ export default function Modal() {
       <div className='modal'>
         <div className='modal__background'>
           <div className='modal__content'>
-            <textarea  
-              className='modal__input'
-              // value={}
-            />
+            <textarea className='modal__input'/>
             <button 
               className='modal__close' 
               onClick={handleRemoveEventListener}
