@@ -19,11 +19,10 @@ function App() {
     <ul>
       {countries.map((country, index) => (
         <li key={index}>
-        <div>
-          {country.name.common}<br></br>
-          {country.name.official}
-        </div>
-        <br></br>
+          <div>
+            {country.name.common}<br></br>
+            <img src={country.flags.png}/>
+          </div>
         </li>
       ))}
     </ul>
