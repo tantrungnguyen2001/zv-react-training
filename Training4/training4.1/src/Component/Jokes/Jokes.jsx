@@ -27,7 +27,7 @@ export default function Jokes() {
 
   const debounceOnClick = debounce(testDelayDebounce, 1000)
 
-  const throttleOnClick = throttle(testDelayThrottle, 1000)
+  const throttleOnClick = throttle(testDelayThrottle, 2000)
 
   return (
     <div>
