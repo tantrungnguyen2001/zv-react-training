@@ -9,13 +9,25 @@ export default function Jokes() {
   const getJoke = () => {
     axios.get(`https://official-joke-api.appspot.com/jokes/random`)
       .then(data => setJokes([data.data]))
-      .catch(err => console.log(err))
+      // .catch(err => console.log(err))
       .finally()
   }
 
   useEffect(() => {getJoke()}, [])
 
-  const debounceOnClick = debounce(getJoke, 1000)
+  const testDelayDebounce = () => {
+    getJoke()
+    console.log('Debounce');
+  }
+
+  const testDelayThrottle = () => {
+    getJoke()
+    console.log('Throttle');
+  }
+
+  const debounceOnClick = debounce(testDelayDebounce, 1000)
+
+  const throttleOnClick = throttle(testDelayThrottle, 1000)
 
   return (
     <div>
@@ -34,7 +46,7 @@ export default function Jokes() {
       >Get more jokes (Debounce)</button>
       
       <button 
-        onClick={debounceOnClick}
+        onClick={throttleOnClick}
         className='btnMoreJokes'
       >Get more jokes (Throttle)</button>
     </div>
