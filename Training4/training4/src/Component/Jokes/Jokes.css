@@ -1,0 +1,14 @@
+.btnMoreJokes{
+  min-width: 150px;
+  height: 28px;
+  background-color: white;
+  color: black;
+  float:right;
+  margin-right: 8px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.btnMoreJokes:hover{
+  background-color: aqua;
+}
