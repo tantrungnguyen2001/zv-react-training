@@ -13,6 +13,8 @@ export default function App() {
       .finally()
   }
 
+  useEffect(() => {getJoke()}, [])
+
   const handleMoreJokeClick = () => setJokes(getJoke)
 
   const debounceOnClick = debounce(handleMoreJokeClick, 1000)
