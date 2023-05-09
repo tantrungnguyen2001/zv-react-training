@@ -5,20 +5,15 @@ import './App.css'
 
 export default function App() {
   const [jokes, setJokes] = useState([])
-  const [moreJokes, setMoreJokes] = useState(0)
-
-  useEffect(() => {
+  
+  const getJoke = () => {
     axios.get(`https://official-joke-api.appspot.com/jokes/random`)
       .then(data => setJokes([data.data]))
       .catch(err => console.log(err))
       .finally()
-  }, [moreJokes])
-  
-  useEffect(() => {
-    console.log(moreJokes);
-  }, [moreJokes])
+  }
 
-  const handleMoreJokeClick = () => setMoreJokes(next => next + 1)
+  const handleMoreJokeClick = () => setJokes(getJoke)
 
   const debounceOnClick = debounce(handleMoreJokeClick, 1000)
 
@@ -32,8 +27,9 @@ export default function App() {
           </li>
         ))}
       </ul>
+
       <button 
-        onClick={debounceOnClick}
+        onClick={getJoke}
         className='btnMoreJokes'
       >Get more jokes</button>
     </div>
