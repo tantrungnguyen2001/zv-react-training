@@ -15,9 +15,7 @@ export default function App() {
 
   useEffect(() => {getJoke()}, [])
 
-  const handleMoreJokeClick = () => setJokes(getJoke)
-
-  const debounceOnClick = debounce(handleMoreJokeClick, 1000)
+  const debounceOnClick = debounce(getJoke, 1000)
 
   return (
     <div>
@@ -31,9 +29,9 @@ export default function App() {
       </ul>
 
       <button 
-        onClick={getJoke}
+        onClick={debounceOnClick}
         className='btnMoreJokes'
-      >Get more jokes</button>
+      >Get more jokes (Debounce)</button>
     </div>
   )
 }

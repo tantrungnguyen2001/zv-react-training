@@ -11,6 +11,7 @@
   color: black;
   float:right;
   margin-right: 8px;
+  padding: 0 8px;
   cursor: pointer;
 }
 
