@@ -45,13 +45,7 @@ function App() {
       <input onChange={e => setCountdown(e.target.value)}/>
 
       <div className='interactBtn'>
-        {isRunningCountdown ? 
-        <button onClick={handleStart}>Start</button>
-        :
-        <>
-        <button onClick={handleStop}>Stop</button>
-        </>
-        }
+      <button onClick={isRunningCountdown? handleStart : handleStop}>{isRunningCountdown? 'Start' : 'Stop'}</button>
       </div>
 
       <CountDown countdown={countdown}/>
