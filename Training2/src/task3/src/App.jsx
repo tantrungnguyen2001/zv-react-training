@@ -33,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    if(countdown < 0){
+    if(!isRunningCountdown && countdown < 0){
       clearInterval(timeId.current)
       setIsRunningCountdown(false)
       alert('End')
