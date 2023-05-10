@@ -5,12 +5,11 @@ import CountDown from './Component/CountDown/CountDown'
 
 function App() {
   const [countdown, setCountdown] = useState('')
-  const [isRunningCountdown, setIsRunningCountdown] = useState(true)
+  const [isRunningCountdown, setIsRunningCountdown] = useState(false)
 
   const timeId = useRef()
 
   const handleStart = (e) => {
-    e.preventDefault()
     // Check input valid
     if(countdown.length == 0){
       alert('Please input a number')
@@ -27,16 +26,29 @@ function App() {
   }
   
   const handleStop = (e) => {
-    e.preventDefault()
     clearInterval(timeId.current)
     setIsRunningCountdown(!isRunningCountdown)
   }
 
+  const handleResume = (e) => {
+    if(isRunningCountdown) return
+    else {
+      timeId.current = setInterval(() => {
+        setCountdown(prev =>  prev - 1)
+      }, 1000)
+      setIsRunningCountdown(true)
+    }
+  }
+
+  const handlePause = (e) => {
+    clearInterval(timeId.current)
+    setIsRunningCountdown(false)
+  }
+
   useEffect(() => {
-    if(!isRunningCountdown && countdown < 0){
+    if(isRunningCountdown && countdown < 0){
       clearInterval(timeId.current)
       setIsRunningCountdown(false)
-      alert('End')
     }
   }, [countdown])
 
@@ -45,7 +57,10 @@ function App() {
       <input onChange={e => setCountdown(e.target.value)}/>
 
       <div className='interactBtn'>
-      <button onClick={isRunningCountdown? handleStart : handleStop}>{isRunningCountdown? 'Start' : 'Stop'}</button>
+      <button onClick={isRunningCountdown? handleStop : handleStart}>{isRunningCountdown? 'Stop' : 'Start'}</button>
+      <button onClick={handleResume}>Resume</button>
+      <button onClick={handlePause}>Pause</button>
+      
       </div>
 
       <CountDown countdown={countdown}/>
