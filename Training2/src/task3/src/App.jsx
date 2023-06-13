@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className='App'>
-      <input onChange={e => setCountdown(e.target.value)}/>
+      <input value={countdown} onChange={e => setCountdown(e.target.value)}/>
 
       <div className='interactBtn'>
       <button onClick={isRunningCountdown? handleStop : handleStart}>{isRunningCountdown? 'Stop' : 'Start'}</button>
