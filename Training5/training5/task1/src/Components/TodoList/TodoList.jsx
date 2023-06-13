@@ -75,20 +75,11 @@ export default function TodoList({ search, isCompleted }) {
             }}
         >
           <input type="text" 
-            className='rounded w-[75%] focus:outline-none focus:outline-[#F0F0F0] text-[#3C486B] px-2'
+            className='rounded w-full focus:outline-none focus:outline-[#F0F0F0] text-[#3C486B] px-2'
             placeholder='Update title here'
             value={updateTitle}
             onChange={e => setUpdateTitle(e.target.value)}
           />
-          <svg xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            strokeWidth={1.5} 
-            stroke="currentColor" 
-            className="w-[20%] h-6 bg-[#F0F0F0] text-[#3C486B] rounded hover:bg-[#00FFCA] cursor-pointer"
-            type='submit'>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
         </form>
         }
         </div>
