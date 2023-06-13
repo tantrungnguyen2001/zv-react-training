@@ -14,7 +14,8 @@ export default function TodoList({ search, isCompleted }) {
 
   return (
     <div className='w-[80%] m-auto'>
-      {todoList.filter(todo => {
+      {todoList.length !== 0 ? 
+      todoList.filter(todo => {
         return todo.title.toLowerCase().includes(search.toLowerCase())
       })
       .filter(todo => {
@@ -93,7 +94,10 @@ export default function TodoList({ search, isCompleted }) {
         </form>
         }
         </div>
-      ))}
+      ))
+      :
+      'No todos'
+      }
     </div>
   )
 }
