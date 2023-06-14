@@ -19,7 +19,7 @@ export default function TodoForm() {
   }
 
   return (
-    <div className='w-[40%] h-[80%] border-[#F0F0F0] border-2 rounded-lg'>
+    <div className='w-[40%] min-h-[80%] border-[#F0F0F0] border-2 rounded-lg'>
       <form onSubmit={e => handleSubmit(e)} className="w-[80%] flex flex-col items-center m-auto my-3">
         <input 
           type="text" 

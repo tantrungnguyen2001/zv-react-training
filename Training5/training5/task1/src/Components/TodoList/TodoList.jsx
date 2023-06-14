@@ -25,7 +25,8 @@ export default function TodoList({ search, isCompleted }) {
         else return todo
       })
       .map(todo => (
-        <div key={todo.id} className='border-2 p-2 rounded my-2'>
+      <div key={todo.id} className={todo.completed ? 'border-2 p-2 rounded my-2 bg-[#F45050] ease-in-out' : 'border-2 p-2 rounded my-2'}>
+        {/* Item wrapper */}
         <div className='flex items-center justify-between'>
           {/* Check box */}
           <input type="checkbox" 
@@ -34,7 +35,7 @@ export default function TodoList({ search, isCompleted }) {
             onChange={() => dispatch(toggle({id: todo.id, completed: todo.completed}))}
           />
           {/* Title shows here */}
-          <div className="flex-1 mx-2 cursor-auto">{todo.title}</div>
+          <div className={!todo.completed ? 'flex-1 mx-2 cursor-auto' : 'flex-1 mx-2 cursor-auto line-through'} >{todo.title}</div>
 
           {/* Update button */}
           <button className='' onClick={() => { 
