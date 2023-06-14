@@ -27,7 +27,7 @@ function App() {
   
   const handleStop = (e) => {
     clearInterval(timeId.current)
-    setIsRunningCountdown(!isRunningCountdown)
+    setIsRunningCountdown(false)
   }
 
   const handleResume = (e) => {
@@ -40,17 +40,12 @@ function App() {
     }
   }
 
-  const handlePause = (e) => {
-    clearInterval(timeId.current)
-    setIsRunningCountdown(false)
-  }
-
   useEffect(() => {
     if(isRunningCountdown && countdown < 0){
       clearInterval(timeId.current)
       setIsRunningCountdown(false)
     }
-  }, [countdown])
+  }, [countdown, isRunningCountdown])
 
   return (
     <div className='App'>
@@ -59,7 +54,7 @@ function App() {
       <div className='interactBtn'>
       <button onClick={isRunningCountdown? handleStop : handleStart}>{isRunningCountdown? 'Stop' : 'Start'}</button>
       <button onClick={handleResume}>Resume</button>
-      <button onClick={handlePause}>Pause</button>
+      <button onClick={handleStop}>Pause</button>
       
       </div>
 
